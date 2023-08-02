@@ -10,15 +10,18 @@ new Swiper('.slide1 .swiper', {
 new Swiper('.slide2 .swiper', {
   slidesPerView: 5,
   spaceBetween: 1,
+  speed: 1000,
   centeredSlides: true,
   loop: true,
+  loopedSlides: 3,
 });
 new Swiper('.slide3 .swiper', {
   slidesPerView: 6,
   spaceBetween: 1,
+  speed: 1000,
   centeredSlides: true,
   loop: true,
-  loopAdditionalSlides: 1,
+  loopedSlides: 4,
 });
 
 // 순차적 애니메이션
@@ -47,54 +50,12 @@ const moneyEls = mapContent.querySelectorAll('.money-text');
 const moneySpanEls = mapContent.querySelectorAll('.money-span');
 const anchor = mapContent.querySelector('.anchor');
 
-function pinChangerChina() {
+function pinChanger(country, textVlaue, anchorHeight) {
   countryEls.forEach((el) => {
-    if (el.classList === china.classList) {
-      china.classList.add('focus');
+    if (el.classList.contains(`${country}`)) {
+      el.classList.add('focus');
       pinWrapEls.forEach((el) => {
-        if (el.classList.contains('china')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      descEls.forEach((el) => {
-        if (el.classList.contains('china')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneyEls.forEach((el) => {
-        if (el.classList.contains('china')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneySpanEls.forEach((el) => {
-        if (el.classList.contains('money')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      anchor.style.top = '70px';
-    } else {
-      el.classList.remove('focus');
-    }
-  });
-}
-function pinChangerAmerica() {
-  countryEls.forEach((el) => {
-    if (el.classList === america.classList) {
-      america.classList.add('focus');
-      pinWrapEls.forEach((el) => {
-        if (el.classList.contains('america')) {
+        if (el.classList.contains(`${country}`)) {
           el.classList.remove('hidden');
           el.classList.add('visible');
         } else {
@@ -103,7 +64,7 @@ function pinChangerAmerica() {
         }
       });
       descEls.forEach((el) => {
-        if (el.classList.contains('america')) {
+        if (el.classList.contains(`${country}`)) {
           el.classList.add('visible');
         } else {
           el.classList.remove('visible');
@@ -111,7 +72,7 @@ function pinChangerAmerica() {
         }
       });
       moneyEls.forEach((el) => {
-        if (el.classList.contains('america')) {
+        if (el.classList.contains(`${country}`)) {
           el.classList.add('text-visible');
         } else {
           el.classList.remove('text-visible');
@@ -119,198 +80,39 @@ function pinChangerAmerica() {
         }
       });
       moneySpanEls.forEach((el) => {
-        if (el.classList.contains('money')) {
+        if (el.classList.contains(`${textVlaue}`)) {
           el.classList.add('text-visible');
         } else {
           el.classList.remove('text-visible');
           el.classList.add('hidden');
         }
       });
-      anchor.style.top = '130px';
-    } else {
-      el.classList.remove('focus');
-    }
-  });
-}
-function pinChangerJapan() {
-  countryEls.forEach((el) => {
-    if (el.classList === japan.classList) {
-      japan.classList.add('focus');
-      pinWrapEls.forEach((el) => {
-        if (el.classList.contains('japan')) {
-          el.classList.remove('hidden');
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      descEls.forEach((el) => {
-        if (el.classList.contains('japan')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneyEls.forEach((el) => {
-        if (el.classList.contains('japan')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneySpanEls.forEach((el) => {
-        if (el.classList.contains('money')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      anchor.style.top = '190px';
-    } else {
-      el.classList.remove('focus');
-    }
-  });
-}
-function pinChangerAustralia() {
-  countryEls.forEach((el) => {
-    if (el.classList === australia.classList) {
-      australia.classList.add('focus');
-      pinWrapEls.forEach((el) => {
-        if (el.classList.contains('australia')) {
-          el.classList.remove('hidden');
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      descEls.forEach((el) => {
-        if (el.classList.contains('australia')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneyEls.forEach((el) => {
-        if (el.classList.contains('australia')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneySpanEls.forEach((el) => {
-        if (el.classList.contains('money')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      anchor.style.top = '250px';
-    } else {
-      el.classList.remove('focus');
-    }
-  });
-}
-function pinChangerVietnam() {
-  countryEls.forEach((el) => {
-    if (el.classList === vietnam.classList) {
-      vietnam.classList.add('focus');
-      pinWrapEls.forEach((el) => {
-        if (el.classList.contains('vietnam')) {
-          el.classList.remove('hidden');
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      descEls.forEach((el) => {
-        if (el.classList.contains('vietnam')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneyEls.forEach((el) => {
-        if (el.classList.contains('vietnam')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneySpanEls.forEach((el) => {
-        if (el.classList.contains('company')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      anchor.style.top = '310px';
-    } else {
-      el.classList.remove('focus');
-    }
-  });
-}
-function pinChangerCanada() {
-  countryEls.forEach((el) => {
-    if (el.classList === canada.classList) {
-      canada.classList.add('focus');
-      pinWrapEls.forEach((el) => {
-        if (el.classList.contains('canada')) {
-          el.classList.remove('hidden');
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      descEls.forEach((el) => {
-        if (el.classList.contains('canada')) {
-          el.classList.add('visible');
-        } else {
-          el.classList.remove('visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneyEls.forEach((el) => {
-        if (el.classList.contains('canada')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      moneySpanEls.forEach((el) => {
-        if (el.classList.contains('company')) {
-          el.classList.add('text-visible');
-        } else {
-          el.classList.remove('text-visible');
-          el.classList.add('hidden');
-        }
-      });
-      anchor.style.top = '370px';
+      anchor.style.top = `${anchorHeight}`;
     } else {
       el.classList.remove('focus');
     }
   });
 }
 
-china.addEventListener('click', pinChangerChina);
-america.addEventListener('click', pinChangerAmerica);
-japan.addEventListener('click', pinChangerJapan);
-australia.addEventListener('click', pinChangerAustralia);
-vietnam.addEventListener('click', pinChangerVietnam);
-canada.addEventListener('click', pinChangerCanada);
+china.addEventListener('click', function () {
+  pinChanger('china', 'money', '70px');
+});
+america.addEventListener('click', function () {
+  pinChanger('america', 'money', '130px');
+});
+japan.addEventListener('click', function () {
+  pinChanger('japan', 'money', '190px');
+});
+australia.addEventListener('click', function () {
+  pinChanger('australia', 'money', '250px');
+});
+vietnam.addEventListener('click', function () {
+  pinChanger('vietnam', 'company', '310px');
+});
+canada.addEventListener('click', function () {
+  pinChanger('canada', 'company', '370px');
+});
+
 // 스크롤 요소
 const toSlideEl = document.querySelector('#to-slide');
 const toTopEl = document.querySelector('#to-top');
